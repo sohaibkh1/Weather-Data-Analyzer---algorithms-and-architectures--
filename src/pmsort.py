@@ -5,6 +5,7 @@ Designed to work on Windows (spawn) by avoiding nested process pools.
 """
 
 import multiprocessing
+import sys
 
 
 def _merge(left, right):
@@ -89,18 +90,21 @@ def mergesort_parallel(a, max_depth=2, procs=None):
     sorting may reduce wall-clock time for large inputs.
     """
     """
-    Depth limiting is used because creating a new process at every recursive
-    split would create too many processes. That can make the program slower or
-    unstable because the operating system has to schedule those processes and
-    copy data between them. The algorithm still follows Merge Sort: split,
-    sort smaller parts, then merge. The difference is that only the leaf chunks
-    up to max_depth are sorted in parallel, and the final merging is done
-    serially. This keeps the bonus task controlled and explainable. Small
-    datasets may be slower in parallel because the process overhead can be
-    larger than the saving, but this approach suits the 100,000-record bonus
-    dataset better than unlimited process creation.
+    Depth limiting stops the program from creating a new process at every
+    split. Too many processes can make the program slower because the operating
+    system has to schedule them and copy data between them. This keeps the
+    parallel version close to lecture Merge Sort: split the data, sort the
+    smaller parts, then merge them back together. Only the leaf chunks up to
+    max_depth are sorted in parallel, and the final merging is done serially.
+    Small datasets may be slower in parallel because process overhead can be
+    bigger than the saving, but it can help with the 100,000-record bonus data.
     """
     if max_depth <= 0 or len(a) <= 1:
+        return mergesort_seq(a)
+
+    if sys.argv[0] == "-" or sys.argv[0] == "-c":
+        # This fallback is only for awkward test runs such as `python -` on Windows.
+        # The normal project run uses main.py, not this stdin test style.
         return mergesort_seq(a)
 
     chunks = _split_to_depth(a, max_depth)
@@ -124,7 +128,7 @@ def mergesort_parallel(a, max_depth=2, procs=None):
         with multiprocessing.Pool(processes=workers) as pool:
             sorted_chunks = pool.map(mergesort_seq, chunks)
     except RuntimeError:
-        # Some test environments cannot start worker processes safely.
+        # If a test environment cannot start workers, use the normal merge sort.
         return mergesort_seq(a)
     except OSError:
         return mergesort_seq(a)

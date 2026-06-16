@@ -104,7 +104,7 @@ def quick_sort(values, ascending=True):
 
     It uses the first element as pivot and follows recursive divide-and-conquer.
     Average time is O(n log n), worst time is O(n^2), and worst recursion
-    depth is O(n). The recursion limit guard helps coursework-scale worst
+    depth is O(n). The recursion limit guard helps task-scale worst
     cases, such as 1460 sorted or reverse-sorted values, avoid Python's default
     recursion limit. This version uses extra partition lists, so it is not the
     in-place textbook version.
@@ -117,7 +117,7 @@ def quick_sort(values, ascending=True):
     correct, but Python's default recursion limit can stop it before it
     finishes.
 
-    The fix below only raises the recursion limit enough for the coursework
+    The fix below only raises the recursion limit enough for the project
     data size. It does not change the pivot rule, does not use built-in sorting,
     and keeps the same taught recursive Quick Sort logic.
     """
