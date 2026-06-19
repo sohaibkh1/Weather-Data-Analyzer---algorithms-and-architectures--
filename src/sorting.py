@@ -109,18 +109,12 @@ def quick_sort(values, ascending=True):
     recursion limit. This version uses extra partition lists, so it is not the
     in-place textbook version.
     """
-    """
-    The first version followed the taught first-element pivot method, but sorted
-    or reverse-sorted 1460-value input caused Python RecursionError. That
-    happens because first-element pivot gives the worst-case split on already
-    ordered data, so recursion depth can grow to O(n). The algorithm is still
-    correct, but Python's default recursion limit can stop it before it
-    finishes.
-
-    The fix below only raises the recursion limit enough for the project
-    data size. It does not change the pivot rule, does not use built-in sorting,
-    and keeps the same taught recursive Quick Sort logic.
-    """
+    # First-element pivot can give the worst split on already sorted or
+    # reverse-sorted data. For 1460 values, that can make the recursion deep
+    # enough for Python to raise RecursionError before the sort finishes.
+    #
+    # This guard only raises the recursion limit enough for task-sized inputs.
+    # It does not change the pivot rule or use built-in sorting.
     required_limit = max(sys.getrecursionlimit(), len(values) * 2 + 100)
     sys.setrecursionlimit(required_limit)
 

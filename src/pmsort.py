@@ -89,16 +89,15 @@ def mergesort_parallel(a, max_depth=2, procs=None):
     The total work is still O(n log n) and space use is O(n), but parallel leaf
     sorting may reduce wall-clock time for large inputs.
     """
-    """
-    Depth limiting stops the program from creating a new process at every
-    split. Too many processes can make the program slower because the operating
-    system has to schedule them and copy data between them. This keeps the
-    parallel version close to lecture Merge Sort: split the data, sort the
-    smaller parts, then merge them back together. Only the leaf chunks up to
-    max_depth are sorted in parallel, and the final merging is done serially.
-    Small datasets may be slower in parallel because process overhead can be
-    bigger than the saving, but it can help with the 100,000-record bonus data.
-    """
+    # Depth limiting stops the program from creating a new process at every
+    # split. Too many processes can make the program slower because the
+    # operating system has to schedule them and copy data between them.
+    #
+    # This still follows Merge Sort: split the data, sort the smaller parts,
+    # then merge them back together. Only the leaf chunks up to max_depth are
+    # sorted in parallel, and the final merging is done serially. Small datasets
+    # may be slower in parallel, but it can help with the 100,000-record bonus
+    # data.
     if max_depth <= 0 or len(a) <= 1:
         return mergesort_seq(a)
 
