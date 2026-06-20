@@ -62,9 +62,10 @@ def insertion_sort(values, ascending=True):
 
 
 def merge_sort(values, ascending=True):
-    """Return a new sorted copy by recursively splitting and merging halves.
+    """Return a new sorted copy using divide-and-conquer Merge Sort.
 
     The input list is not changed.
+    It recursively splits the list into halves, sorts each half, and merges them.
     Best, average, and worst time: O(n log n). Extra space: O(n).
     """
     if len(values) <= 1:

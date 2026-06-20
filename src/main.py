@@ -1,6 +1,16 @@
 """
-main.py
-CLI for Weather Data Analyzer - Algorithms & Architecture (Python).
+Program Name: Weather Data Analyzer
+Author: Sohaib Khalaf
+Date: 26 June 2025
+Description: Console program to analyse city temperature data.
+Main Functionality:
+    - Reads weather data
+    - Implements Bubble, Insertion, Merge, and Quick Sort
+    - Linear and Binary Search
+    - Dataset merging
+    - Parallel Merge Sort
+Input: dataset file(s), CLI parameters
+Output: Interval-sampled sorted data, search results, merged datasets
 """
 
 import argparse
