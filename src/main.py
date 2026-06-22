@@ -1,19 +1,27 @@
 """
 Program Name: Weather Data Analyzer
 Author: Sohaib Khalaf
-Date: 26 June 2025
-Description: Console program to analyse city temperature data.
+Date: 23 June 2026
+
+Description:
+Console program for loading, sorting, searching and merging weather data.
+
 Main Functionality:
-    - Reads weather data
-    - Implements Bubble, Insertion, Merge, and Quick Sort
-    - Linear and Binary Search
-    - Dataset merging
-    - Parallel Merge Sort
-Input: dataset file(s), CLI parameters
-Output: Interval-sampled sorted data, search results, merged datasets
+ - Read weather values from text files
+ - Validate numeric data
+ - Run Bubble, Insertion, Merge and Quick Sort
+ - Run Linear Search and Binary Search
+ - Merge two datasets
+  - Run depth-limited Parallel Merge Sort
+
+Input:
+    Dataset file names and command line options
+
+  Output:
+      Loaded data summary, sorted interval values, search results and errors
 """
 
-import argparse
+import argparse #terminal commands.
 from pathlib import Path
 
 from src.sorting import bubble_sort, insertion_sort, merge_sort, quick_sort
@@ -24,8 +32,8 @@ from src.pmsort import mergesort_parallel
 PROJECT_ROOT = Path(__file__).resolve().parent.parent
 
 
-def load_weather_file(path):
-    """Load one numeric weather value per non-blank line."""
+def load_weather_file(path):  #read weather values.
+    """Load one numeric weather value from each non-blank line."""
     values = []
     file_path = Path(path)
 
@@ -36,12 +44,15 @@ def load_weather_file(path):
             line_number += 1
             text = line.strip()
 
+            #Blankk lines are ignored... they are not weather values.
             if text == "":
                 continue
 
             try:
-                values.append(float(text))
+                values.append(float(text))  #float because data haas decimals not only int.
+
             except ValueError:
+                # Stop here because bad data should not be hidden.
                 raise ValueError(
                     f"{file_path.name}: line {line_number} is not numeric: {text}"
                 )
@@ -50,12 +61,14 @@ def load_weather_file(path):
 
 
 def resolve_data_path(path_text):
-    """Resolve a direct path first, then try the project data folder."""
+    """Find a file from a direct path or from the data folder."""
     path = Path(path_text)
 
+#first try the path exactly as the user typed it.
     if path.exists():
         return path
 
+#then try inside the project data folder.
     data_path = PROJECT_ROOT / "data" / path_text
 
     if data_path.exists():
@@ -65,7 +78,7 @@ def resolve_data_path(path_text):
 
 
 def print_dataset_summary(label, values):
-    """Print a short summary of a loaded dataset."""
+    """Print the file name, record count and first 10 values."""
     print(f"Dataset: {label}")
     print(f"Records loaded: {len(values)}")
     print(f"First 10 values: {values[:10]}")
@@ -73,7 +86,7 @@ def print_dataset_summary(label, values):
 
 
 def choose_sort(sort_name, values, ascending=True):
-    """Run the requested manual sorting algorithm and return a new list."""
+    """Call the selected manual sorting algorithm."""
     if sort_name is None:
         return list(values)
 
@@ -93,19 +106,20 @@ def choose_sort(sort_name, values, ascending=True):
 
 
 def print_interval_values(values, interval):
-    """Print every interval-th value using 1-based positions."""
+##   """Print every interval-th value using 1-based positions."""
     if interval <= 0:
         return
 
     position = interval
 
+    ## The task asks for every kth value, so position starts at k not 0.
     while position <= len(values):
         print(f"position {position}: {values[position - 1]}")
         position += interval
 
 
 def print_nearest_values(nearest):
-    """Print nearest-value tuples returned by nearest_values."""
+    """Print nearest value results returned by nearest_values()."""
     print("Nearest value(s):")
 
     for value, indices in nearest:
@@ -113,12 +127,13 @@ def print_nearest_values(nearest):
 
 
 def run_search(values, target, use_binary):
-    """Run linear or binary search and print exact or nearest matches."""
+    """Run Linear Search or Binary Search and print the result."""
     print(f"Search target: {target}")
 
     if use_binary:
         print("Search method: binary")
-        # Binary search needs ascending sorted data, so use our manual Merge Sort.
+
+        # Binary Search needs ascending sorted data.
         sorted_values = merge_sort(values, ascending=True)
         indices = binary_search_all(sorted_values, target)
 
@@ -141,21 +156,23 @@ def run_search(values, target, use_binary):
             "Nearest values use an ascending sorted copy because nearest-value "
             "search requires ordered data."
         )
+
+        # Nearest-value search uses sorted data to compare both sides
         sorted_values = merge_sort(values, ascending=True)
         print_nearest_values(nearest_values(sorted_values, target))
 
 
 def build_parser():
-    """Build command-line options for the Weather Data Analyzer."""
+    """Create the command-line options."""
     parser = argparse.ArgumentParser(description="Weather Data Analyzer")
-    input_group = parser.add_mutually_exclusive_group()
 
+    input_group = parser.add_mutually_exclusive_group()
     input_group.add_argument("--file", help="path or data filename to load")
     input_group.add_argument(
         "--merge",
         nargs=2,
         metavar=("PATH_A", "PATH_C"),
-        help="load and concatenate two datasets",
+        help="load and join two datasets",
     )
 
     parser.add_argument(
@@ -167,37 +184,40 @@ def build_parser():
         "--order",
         choices=("asc", "desc"),
         default="asc",
-        help="sort order, default asc",
+        help="sort order, default is asc",
     )
     parser.add_argument(
         "--print-interval",
         type=int,
         default=0,
-        help="print every k-th value using 1-based positions",
+        help="print every kth value using 1-based positions",
     )
-    parser.add_argument("--search", help="numeric weather value to search for")
+    parser.add_argument(
+        "--search",
+        help="numeric weather value to search for",
+    )
     parser.add_argument(
         "--binary",
         action="store_true",
-        help="use binary search on ascending sorted data",
+        help="use Binary Search on ascending sorted data",
     )
     parser.add_argument(
         "--parallel-merge",
         action="store_true",
-        help="use depth-limited parallel merge sort",
+        help="use depth-limited Parallel Merge Sort",
     )
     parser.add_argument(
         "--parallel-depth",
         type=int,
         default=2,
-        help="depth limit for parallel merge sort",
+        help="depth limit for Parallel Merge Sort",
     )
 
     return parser
 
 
 def main():
-    """Run the Weather Data Analyzer console application."""
+    """Run the Weather Data Analyzer."""
     parser = build_parser()
     args = parser.parse_args()
 
@@ -217,17 +237,21 @@ def main():
             values = load_weather_file(data_path)
             print_dataset_summary(data_path.name, values)
             label = data_path.name
+
         else:
             path_a = resolve_data_path(args.merge[0])
             path_c = resolve_data_path(args.merge[1])
+
             values_a = load_weather_file(path_a)
             values_c = load_weather_file(path_c)
 
             print_dataset_summary(path_a.name, values_a)
             print_dataset_summary(path_c.name, values_c)
 
+            # Task 5 joins two city datasets before sorting or searching.
             values = values_a + values_c
             label = f"{path_a.name} + {path_c.name}"
+
             print(f"Merged dataset: {label}")
             print(f"Merged records: {len(values)}")
             print()
@@ -237,15 +261,19 @@ def main():
         if args.parallel_merge:
             print("Sorting algorithm: depth-limited parallel merge")
             print(f"Parallel depth: {args.parallel_depth}")
+
             current_values = mergesort_parallel(
                 values, max_depth=args.parallel_depth
             )
             print()
+
         elif args.sort is not None:
             ascending = args.order == "asc"
             order_label = "ascending" if ascending else "descending"
+
             print(f"Sorting algorithm: {args.sort}")
             print(f"Order: {order_label}")
+
             current_values = choose_sort(args.sort, values, ascending)
             print()
 
@@ -261,6 +289,7 @@ def main():
         if args.search is not None:
             try:
                 target = float(args.search)
+
             except ValueError:
                 parser.error("--search must be a numeric value")
 
