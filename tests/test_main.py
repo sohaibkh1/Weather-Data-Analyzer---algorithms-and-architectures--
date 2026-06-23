@@ -2,6 +2,7 @@ import sys
 import os
 import tempfile
 from pathlib import Path
+
 sys.path.append(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 
 from src.main import load_weather_file
@@ -29,7 +30,7 @@ def test_load_weather_file_accepts_decimals_and_blank_lines():
     finally:
         Path(path).unlink(missing_ok=True)
 
-    print("Test PASSED: Decimal values load and blank lines are ignored!")
+    print("Test PASSED: Decimal values load and blank lines are ignored")
 
 
 def test_load_weather_file_reports_bad_text():
@@ -49,7 +50,7 @@ def test_load_weather_file_reports_bad_text():
     finally:
         Path(path).unlink(missing_ok=True)
 
-    print("Test PASSED: Bad text reports file name and line number!")
+    print("Test PASSED: Bad text reports file name and line number..")
 
 
 def test_load_weather_file_empty_file():
@@ -62,11 +63,11 @@ def test_load_weather_file_empty_file():
     finally:
         Path(path).unlink(missing_ok=True)
 
-    print("Test PASSED: Empty file returns an empty list!")
+    print("Test PASSED: Empty file returns an empty list")
 
 
 if __name__ == "__main__":
     test_load_weather_file_accepts_decimals_and_blank_lines()
     test_load_weather_file_reports_bad_text()
     test_load_weather_file_empty_file()
-    print("\nAll tests completed successfully!")
+    print("\nAll main file tests completed successfully!!")
