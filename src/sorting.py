@@ -18,7 +18,7 @@ def bubble_sort(values, ascending=True):
         swapped = False
 
         for j in range(len(result) - 1 - i):
-    #True when neighbouring values are in the wrong order.
+            # True when neighbouring values are in the wrong order.
             wrong_order = (
                 ascending and result[j] > result[j + 1]
             ) or (
@@ -29,7 +29,7 @@ def bubble_sort(values, ascending=True):
                 result[j], result[j + 1] = result[j + 1], result[j]
                 swapped = True
 
-    #if this pass made no swaps, the list is already sorted.
+        # if this pass made no swaps, the list is already sorted.
         if not swapped:
             break
 
@@ -38,8 +38,8 @@ def bubble_sort(values, ascending=True):
 
 def insertion_sort(values, ascending=True):
     """
-Insertion Sort:
-best time: O(n). Average and worst time: O(n^2).
+    Insertion Sort:
+    Best time: O(n). Average and worst time: O(n^2).
     """
     result = list(values)
 
@@ -68,7 +68,7 @@ def merge_sort(values, ascending=True):
     if len(values) <= 1:
         return list(values)
 
-#split the list, sort both halves, then merge them.
+    # split the list, sort both halves, then merge them.
     middle = len(values) // 2
     left = merge_sort(values[:middle], ascending)
     right = merge_sort(values[middle:], ascending)
@@ -77,20 +77,20 @@ def merge_sort(values, ascending=True):
     i = 0
     j = 0
 
-#Compare front value from each sorted half.
+    # Compare front value from each sorted half.
     while i < len(left) and j < len(right):
         if (
             (ascending and left[i] <= right[j])
             or (not ascending and left[i] >= right[j])
         ):
-    #Take left first on equal values keeps Merge Sort stable.
+            # Take left first on equal values keeps Merge Sort stable.
             result.append(left[i])
             i += 1
         else:
             result.append(right[j])
             j += 1
 
-    #add the values left over after one half finishes.
+    # add the values left over after one half finishes.
     while i < len(left):
         result.append(left[i])
         i += 1
@@ -107,7 +107,7 @@ def quick_sort(values, ascending=True):
     Quick Sort using the first value as pivot.
     Average time: O(n log n). Worst time: O(n^2).
     """
-#First pivot Quick Sort can recurse deeply on sorted data.
+    # First pivot Quick Sort can recurse deeply on sorted data.
     required_limit = max(sys.getrecursionlimit(), len(values) * 2 + 100)
     sys.setrecursionlimit(required_limit)
 
@@ -119,12 +119,12 @@ def _quick_sort_recursive(values, ascending):
     if len(values) <= 1:
         return list(values)
 
-    #first value is the pivot
+    # first value is the pivot
     pivot = values[0]
     left = []
     right = []
 
-#Put each value on the correct side of the pivot.
+    # Put each value on the correct side of the pivot.
     for i in range(1, len(values)):
         if (
             (ascending and values[i] < pivot)

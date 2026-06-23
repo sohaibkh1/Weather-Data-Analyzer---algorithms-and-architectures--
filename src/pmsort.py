@@ -25,7 +25,7 @@ def _merge(left, right):
             result.append(right[j])
             j += 1
 
-    #add whatever left after one side finishes.
+    # add whatever left after one side finishes.
     while i < len(left):
         result.append(left[i])
         i += 1
@@ -45,7 +45,7 @@ def mergesort_seq(values):
     if len(values) <= 1:
         return list(values)
 
-#Split and sort each half and then merge.
+    # Split and sort each half and then merge.
     middle = len(values) // 2
     left = mergesort_seq(values[:middle])
     right = mergesort_seq(values[middle:])
@@ -60,7 +60,7 @@ def _split_to_depth(values, depth):
 
     middle = len(values) // 2
 
-    #keep splitting both halves while depth still allows it
+    # keep splitting both halves while depth still allows it
     left_chunks = _split_to_depth(values[:middle], depth - 1)
     right_chunks = _split_to_depth(values[middle:], depth - 1)
 
@@ -82,7 +82,7 @@ def _merge_many(sorted_chunks):
 
     result = sorted_chunks[0]
 
-  #merge one chunk at a time.
+    # merge one chunk at a time.
     for i in range(1, len(sorted_chunks)):
         result = _merge(result, sorted_chunks[i])
 
@@ -97,11 +97,11 @@ def mergesort_parallel(a, max_depth=2, procs=None):
     if max_depth <= 0 or len(a) <= 1:
         return mergesort_seq(a)
 
-    #some stdin test runs do not work well with multiprocessing
+    # some stdin test runs do not work well with multiprocessing
     if sys.argv[0] == "-" or sys.argv[0] == "-c":
         return mergesort_seq(a)
 
-    #split first, then sort the leaf chunks in the process pool
+    # split first, then sort the leaf chunks in the process pool
     chunks = _split_to_depth(a, max_depth)
 
     if len(chunks) <= 1:
@@ -135,5 +135,5 @@ def mergesort_parallel(a, max_depth=2, procs=None):
     except OSError:
         return mergesort_seq(a)
 
-    #final merge is serial after the chunks are sorted
+    # final merge is serial after the chunks are sorted
     return _merge_many(sorted_chunks)

@@ -1,10 +1,10 @@
 Weather Data Analyzer Evaluation
 
 Sorting evaluation for CityA 365 values
-Bubble Sort: 0.008561 seconds
-Insertion Sort: 0.003504 seconds
-Merge Sort: 0.000746 seconds
-Quick Sort: 0.000386 seconds
+Bubble Sort: 0.011256 seconds
+Insertion Sort: 0.005033 seconds
+Merge Sort: 0.000909 seconds
+Quick Sort: 0.000577 seconds
 
 Operation counts
 Bubble Sort: comparisons=66199, swaps=48674
@@ -20,10 +20,10 @@ Binary Search matches in sorted data: [196, 197, 198]
 Binary Search comparisons: 15
 
 Sorting evaluation for CityA 1460 values
-Bubble Sort: 0.174995 seconds
-Insertion Sort: 0.073612 seconds
-Merge Sort: 0.004181 seconds
-Quick Sort: 0.005264 seconds
+Bubble Sort: 0.191656 seconds
+Insertion Sort: 0.067898 seconds
+Merge Sort: 0.004016 seconds
+Quick Sort: 0.003096 seconds
 
 Operation counts
 Bubble Sort: comparisons=1062144, swaps=586115
@@ -39,6 +39,6 @@ Binary Search matches in sorted data: [370, 371, 372, 373]
 Binary Search comparisons: 22
 
 Parallel Merge Sort evaluation
-Sequential Merge Sort: 0.505549 seconds
-Parallel Merge Sort: 0.563344 seconds
+Sequential Merge Sort: 0.644973 seconds
+Parallel Merge Sort: 0.624664 seconds
 Parallel can be slower if process overhead is bigger than the saving.

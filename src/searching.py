@@ -15,7 +15,7 @@ def linear_search_all(values, target):
     """
     matches = []
 
-# check every value because the target can appear more than once.
+    # check every value because the target can appear more than once.
     for i in range(len(values)):
         if values[i] == target:
             matches.append(i)
@@ -25,8 +25,9 @@ def linear_search_all(values, target):
 
 def binary_search_all(sorted_values, target):
     """
-    Binary Search on #ascending sorted data:
-    Search time: O(log n), plus O(k) to collect duplicate matches.
+    Binary Search on ascending sorted data:
+    Best and average time: O(log n), plus O(k) to collect duplicates.
+    Worst time: O(n) if many values match.
     """
     low = 0
     high = len(sorted_values) - 1
@@ -38,18 +39,18 @@ def binary_search_all(sorted_values, target):
             left_matches = []
             right_matches = []
 
-            #Collect equal values on the left side of mid.
+            # Collect equal values on the left side of mid.
             left = mid - 1
             while left >= 0 and sorted_values[left] == target:
                 left_matches.append(left)
                 left -= 1
 
-            #put left matches back into ascending index order
+            # put left matches back into ascending index order
             ordered_left = []
             for i in range(len(left_matches) - 1, -1, -1):
                 ordered_left.append(left_matches[i])
 
-            #collect equal values on the right side of mid
+            # collect equal values on the right side of mid
             right = mid + 1
             while right < len(sorted_values) and sorted_values[right] == target:
                 right_matches.append(right)
@@ -77,7 +78,8 @@ def binary_search_all(sorted_values, target):
 def nearest_values(sorted_values, target):
     """
     Find nearest value or values in ascending sorted data.
-    Main search is O(log n). Duplicate collection can make worst case O(n).
+    Best and average time: O(log n) to find the nearest position.
+    Worst time: O(n) if duplicate collection scans many matching values.
     """
     if len(sorted_values) == 0:
         return []
@@ -85,7 +87,7 @@ def nearest_values(sorted_values, target):
     low = 0
     high = len(sorted_values) - 1
 
-    #Find where the target would fit in sorted list
+    # Find where the target would fit in sorted list
     while low <= high:
         mid = (low + high) // 2
 
@@ -97,7 +99,7 @@ def nearest_values(sorted_values, target):
         else:
             low = mid + 1
 
-#low is now the insertion position.
+    # low is now the insertion position.
     right_index = low
     left_index = low - 1
 
@@ -121,7 +123,7 @@ def nearest_values(sorted_values, target):
     if right_distance < left_distance:
         return [(right_value, binary_search_all(sorted_values, right_value))]
 
-    #If both sides are equally close = return both.
+    # If both sides are equally close = return both.
     return [
         (left_value, binary_search_all(sorted_values, left_value)),
         (right_value, binary_search_all(sorted_values, right_value)),

@@ -1,4 +1,4 @@
-﻿================================================================
+================================================================
 Sorting tests
 COMMAND: python tests/test_sorting.py
 ----------------------------------------------------------------
@@ -27,12 +27,16 @@ Bubble Sort: case passed
 Insertion Sort: case passed
 Merge Sort: case passed
 Quick Sort: case passed
-Test PASSED: Sorting edge cases work for all algorithms!
+Bubble Sort: case passed
+Insertion Sort: case passed
+Merge Sort: case passed
+Quick Sort: case passed
+Test PASSED: sorting edge cases work for all algorithms
 
 Running test: quick_sort_stress_1460...
-Test PASSED: Quick Sort handles 1460 sorted and reverse inputs!
+Test PASSED: Quick Sort handles 1460 sorted and reverse inputs
 
-All tests completed successfully!
+All sorting tests completed successfully
 ----------------------------------------------------------------
 EXIT CODE: 0
 
@@ -41,15 +45,15 @@ Searching tests
 COMMAND: python tests/test_searching.py
 ----------------------------------------------------------------
 Running test: linear_search_cases...
-Test PASSED: Linear search cases work!
+Test PASSED: Linear Search cases work!
 
 Running test: binary_search_cases...
-Test PASSED: Binary search cases work!
+Test PASSED: Binary Search cases work!
 
 Running test: nearest_values_cases...
-Test PASSED: Nearest value cases work!
+Test PASSED: Nearest value cases work
 
-All tests completed successfully!
+All searching tests completed successfully
 ----------------------------------------------------------------
 EXIT CODE: 0
 
@@ -75,15 +79,14 @@ Main data-loading tests
 COMMAND: python tests/test_main.py
 ----------------------------------------------------------------
 Running test: load_weather_file_accepts_decimals_and_blank_lines...
-Test PASSED: Decimal values load and blank lines are ignored!
+Test PASSED: Decimal values load and blank lines are ignored
 
 Running test: load_weather_file_reports_bad_text...
-Test PASSED: Bad text reports file name and line number!
+Test PASSED: Bad text reports file name and line number..
 
 Running test: load_weather_file_empty_file...
-Test PASSED: Empty file returns an empty list!
+Test PASSED: Empty file returns an empty list
 
-All tests completed successfully!
+All main file tests completed successfully!!
 ----------------------------------------------------------------
 EXIT CODE: 0
-

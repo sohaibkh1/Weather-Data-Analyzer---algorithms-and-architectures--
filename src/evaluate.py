@@ -289,7 +289,7 @@ def evaluate_search(values, label):
 
 
 def evaluate_parallel():
-    """Compare sequential and parallel Merge Sort on the large file,"""
+    """Compare sequential and parallel Merge Sort on the large file."""
     filename = "CityN_100000.txt"
     path = DATA_DIR / filename
     lines = []

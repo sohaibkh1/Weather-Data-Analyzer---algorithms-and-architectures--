@@ -21,7 +21,7 @@ Input:
       Loaded data summary, sorted interval values, search results and errors
 """
 
-import argparse #terminal commands.
+import argparse  # terminal commands.
 from pathlib import Path
 
 from src.sorting import bubble_sort, insertion_sort, merge_sort, quick_sort
@@ -32,7 +32,7 @@ from src.pmsort import mergesort_parallel
 PROJECT_ROOT = Path(__file__).resolve().parent.parent
 
 
-def load_weather_file(path):  #read weather values.
+def load_weather_file(path):  # read weather values.
     """Load one numeric weather value from each non-blank line."""
     values = []
     file_path = Path(path)
@@ -44,12 +44,12 @@ def load_weather_file(path):  #read weather values.
             line_number += 1
             text = line.strip()
 
-            #Blankk lines are ignored... they are not weather values.
+            # Blank lines are ignored... they are not weather values.
             if text == "":
                 continue
 
             try:
-                values.append(float(text))  #float because data haas decimals not only int.
+                values.append(float(text))  # float because data has decimals not only int.
 
             except ValueError:
                 # Stop here because bad data should not be hidden.
@@ -64,11 +64,11 @@ def resolve_data_path(path_text):
     """Find a file from a direct path or from the data folder."""
     path = Path(path_text)
 
-#first try the path exactly as the user typed it.
+    # first try the path exactly as the user typed it.
     if path.exists():
         return path
 
-#then try inside the project data folder.
+    # then try inside the project data folder.
     data_path = PROJECT_ROOT / "data" / path_text
 
     if data_path.exists():
@@ -106,13 +106,13 @@ def choose_sort(sort_name, values, ascending=True):
 
 
 def print_interval_values(values, interval):
-##   """Print every interval-th value using 1-based positions."""
+    """Print every interval-th value using 1-based positions."""
     if interval <= 0:
         return
 
     position = interval
 
-    ## The task asks for every kth value, so position starts at k not 0.
+    # The task asks for every kth value, so position starts at k not 0.
     while position <= len(values):
         print(f"position {position}: {values[position - 1]}")
         position += interval
