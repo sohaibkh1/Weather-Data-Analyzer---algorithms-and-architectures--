@@ -1,0 +1,89 @@
+﻿================================================================
+Sorting tests
+COMMAND: python tests/test_sorting.py
+----------------------------------------------------------------
+Running test: edge_cases_all_algos...
+Bubble Sort: case passed
+Insertion Sort: case passed
+Merge Sort: case passed
+Quick Sort: case passed
+Bubble Sort: case passed
+Insertion Sort: case passed
+Merge Sort: case passed
+Quick Sort: case passed
+Bubble Sort: case passed
+Insertion Sort: case passed
+Merge Sort: case passed
+Quick Sort: case passed
+Bubble Sort: case passed
+Insertion Sort: case passed
+Merge Sort: case passed
+Quick Sort: case passed
+Bubble Sort: case passed
+Insertion Sort: case passed
+Merge Sort: case passed
+Quick Sort: case passed
+Bubble Sort: case passed
+Insertion Sort: case passed
+Merge Sort: case passed
+Quick Sort: case passed
+Test PASSED: Sorting edge cases work for all algorithms!
+
+Running test: quick_sort_stress_1460...
+Test PASSED: Quick Sort handles 1460 sorted and reverse inputs!
+
+All tests completed successfully!
+----------------------------------------------------------------
+EXIT CODE: 0
+
+================================================================
+Searching tests
+COMMAND: python tests/test_searching.py
+----------------------------------------------------------------
+Running test: linear_search_cases...
+Test PASSED: Linear search cases work!
+
+Running test: binary_search_cases...
+Test PASSED: Binary search cases work!
+
+Running test: nearest_values_cases...
+Test PASSED: Nearest value cases work!
+
+All tests completed successfully!
+----------------------------------------------------------------
+EXIT CODE: 0
+
+================================================================
+Parallel merge sort tests
+COMMAND: python tests/test_pmsort.py
+----------------------------------------------------------------
+Running test: mergesort_seq_edge_cases...
+Test PASSED: Sequential merge sort edge cases work!
+
+Running test: parallel_matches_sequential_depths...
+max_depth=0: passed
+max_depth=1: passed
+max_depth=2: passed
+Test PASSED: Parallel merge sort matches sequential merge sort!
+
+All tests completed successfully!
+----------------------------------------------------------------
+EXIT CODE: 0
+
+================================================================
+Main data-loading tests
+COMMAND: python tests/test_main.py
+----------------------------------------------------------------
+Running test: load_weather_file_accepts_decimals_and_blank_lines...
+Test PASSED: Decimal values load and blank lines are ignored!
+
+Running test: load_weather_file_reports_bad_text...
+Test PASSED: Bad text reports file name and line number!
+
+Running test: load_weather_file_empty_file...
+Test PASSED: Empty file returns an empty list!
+
+All tests completed successfully!
+----------------------------------------------------------------
+EXIT CODE: 0
+
