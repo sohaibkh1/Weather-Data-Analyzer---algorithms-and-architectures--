@@ -1,0 +1,517 @@
+﻿Task 1: load CityA_365.txt
+COMMAND: python -m src.main --file CityA_365.txt
+----------------------------------------------------------------
+Weather Data Analyzer
+
+Dataset: CityA_365.txt
+Records loaded: 365
+First 10 values: [17.7, 18.7, 16.2, 9.3, 15.2, 11.6, 17.6, 11.5, 20.2, 18.7]
+----------------------------------------------------------------
+EXIT CODE: 0
+================================================================
+Sort CityA_365.txt with Merge Sort
+COMMAND: python -m src.main --file CityA_365.txt --sort merge --order asc --print-interval 15
+----------------------------------------------------------------
+Weather Data Analyzer
+
+Dataset: CityA_365.txt
+Records loaded: 365
+First 10 values: [17.7, 18.7, 16.2, 9.3, 15.2, 11.6, 17.6, 11.5, 20.2, 18.7]
+
+Sorting algorithm: merge
+Order: ascending
+
+Every 15th sorted value:
+position 15: 2.4
+position 30: 3.9
+position 45: 4.9
+position 60: 6.0
+position 75: 6.9
+position 90: 8.1
+position 105: 9.3
+position 120: 10.7
+position 135: 11.6
+position 150: 13.4
+position 165: 14.2
+position 180: 15.2
+position 195: 16.0
+position 210: 17.2
+position 225: 18.1
+position 240: 19.0
+position 255: 20.3
+position 270: 21.1
+position 285: 22.3
+position 300: 23.3
+position 315: 24.6
+position 330: 25.8
+position 345: 27.1
+position 360: 29.7
+----------------------------------------------------------------
+EXIT CODE: 0
+================================================================
+Linear search CityA_365.txt for 19.9
+COMMAND: python -m src.main --file CityA_365.txt --search 19.9
+----------------------------------------------------------------
+Weather Data Analyzer
+
+Dataset: CityA_365.txt
+Records loaded: 365
+First 10 values: [17.7, 18.7, 16.2, 9.3, 15.2, 11.6, 17.6, 11.5, 20.2, 18.7]
+
+Search target: 19.9
+Search method: linear
+Found at indices in current data: [53]
+----------------------------------------------------------------
+EXIT CODE: 0
+================================================================
+Binary search CityA_365.txt for 19.9
+COMMAND: python -m src.main --file CityA_365.txt --search 19.9 --binary
+----------------------------------------------------------------
+Weather Data Analyzer
+
+Dataset: CityA_365.txt
+Records loaded: 365
+First 10 values: [17.7, 18.7, 16.2, 9.3, 15.2, 11.6, 17.6, 11.5, 20.2, 18.7]
+
+Search target: 19.9
+Search method: binary
+Found at indices in ascending sorted data: [250]
+----------------------------------------------------------------
+EXIT CODE: 0
+================================================================
+Sort CityA_1460.txt with Merge Sort
+COMMAND: python -m src.main --file CityA_1460.txt --sort merge --order asc --print-interval 100
+----------------------------------------------------------------
+Weather Data Analyzer
+
+Dataset: CityA_1460.txt
+Records loaded: 1460
+First 10 values: [17.7, 18.7, 16.2, 9.3, 15.2, 11.6, 17.6, 11.5, 20.2, 18.7]
+
+Sorting algorithm: merge
+Order: ascending
+
+Every 100th sorted value:
+position 100: 3.3
+position 200: 5.4
+position 300: 7.4
+position 400: 9.2
+position 500: 11.3
+position 600: 13.3
+position 700: 14.9
+position 800: 16.5
+position 900: 18.3
+position 1000: 20.3
+position 1100: 21.8
+position 1200: 23.6
+position 1300: 25.4
+position 1400: 28.1
+----------------------------------------------------------------
+EXIT CODE: 0
+================================================================
+Linear search CityA_1460.txt for 19.9
+COMMAND: python -m src.main --file CityA_1460.txt --search 19.9
+----------------------------------------------------------------
+Weather Data Analyzer
+
+Dataset: CityA_1460.txt
+Records loaded: 1460
+First 10 values: [17.7, 18.7, 16.2, 9.3, 15.2, 11.6, 17.6, 11.5, 20.2, 18.7]
+
+Search target: 19.9
+Search method: linear
+Found at indices in current data: [53, 432, 465, 728, 737, 1187, 1224]
+----------------------------------------------------------------
+EXIT CODE: 0
+================================================================
+Binary search CityA_1460.txt for 19.9
+COMMAND: python -m src.main --file CityA_1460.txt --search 19.9 --binary
+----------------------------------------------------------------
+Weather Data Analyzer
+
+Dataset: CityA_1460.txt
+Records loaded: 1460
+First 10 values: [17.7, 18.7, 16.2, 9.3, 15.2, 11.6, 17.6, 11.5, 20.2, 18.7]
+
+Search target: 19.9
+Search method: binary
+Found at indices in ascending sorted data: [973, 974, 975, 976, 977, 978, 979]
+----------------------------------------------------------------
+EXIT CODE: 0
+================================================================
+Merge CityA_365.txt and CityC_365.txt
+COMMAND: python -m src.main --merge CityA_365.txt CityC_365.txt --sort merge --order asc --print-interval 15 --search 20.5 --binary
+----------------------------------------------------------------
+Weather Data Analyzer
+
+Dataset: CityA_365.txt
+Records loaded: 365
+First 10 values: [17.7, 18.7, 16.2, 9.3, 15.2, 11.6, 17.6, 11.5, 20.2, 18.7]
+
+Dataset: CityC_365.txt
+Records loaded: 365
+First 10 values: [12.0, 13.1, 19.0, 15.6, 17.6, 12.1, 14.0, 15.1, 12.9, 18.2]
+
+Merged dataset: CityA_365.txt + CityC_365.txt
+Merged records: 730
+
+Sorting algorithm: merge
+Order: ascending
+
+Every 15th sorted value:
+position 15: 1.2
+position 30: 2.4
+position 45: 3.1
+position 60: 3.9
+position 75: 4.4
+position 90: 4.9
+position 105: 5.3
+position 120: 6.0
+position 135: 6.3
+position 150: 6.9
+position 165: 7.7
+position 180: 8.3
+position 195: 8.8
+position 210: 9.2
+position 225: 9.7
+position 240: 10.4
+position 255: 10.9
+position 270: 11.5
+position 285: 11.8
+position 300: 12.8
+position 315: 13.3
+position 330: 13.7
+position 345: 14.5
+position 360: 15.1
+position 375: 15.6
+position 390: 16.1
+position 405: 17.1
+position 420: 17.5
+position 435: 18.1
+position 450: 18.5
+position 465: 19.0
+position 480: 19.6
+position 495: 20.2
+position 510: 20.7
+position 525: 21.0
+position 540: 21.6
+position 555: 22.1
+position 570: 22.7
+position 585: 23.2
+position 600: 23.7
+position 615: 24.2
+position 630: 25.0
+position 645: 25.5
+position 660: 26.0
+position 675: 26.5
+position 690: 27.2
+position 705: 28.1
+position 720: 29.6
+
+Search target: 20.5
+Search method: binary
+Found at indices in ascending sorted data: [499, 500, 501, 502]
+----------------------------------------------------------------
+EXIT CODE: 0
+================================================================
+Merge CityA_1460.txt and CityC_1460.txt
+COMMAND: python -m src.main --merge CityA_1460.txt CityC_1460.txt --sort merge --order asc --print-interval 100 --search 20.5 --binary
+----------------------------------------------------------------
+Weather Data Analyzer
+
+Dataset: CityA_1460.txt
+Records loaded: 1460
+First 10 values: [17.7, 18.7, 16.2, 9.3, 15.2, 11.6, 17.6, 11.5, 20.2, 18.7]
+
+Dataset: CityC_1460.txt
+Records loaded: 1460
+First 10 values: [12.0, 13.1, 19.0, 15.6, 17.6, 12.1, 14.0, 15.1, 12.9, 18.2]
+
+Merged dataset: CityA_1460.txt + CityC_1460.txt
+Merged records: 2920
+
+Sorting algorithm: merge
+Order: ascending
+
+Every 100th sorted value:
+position 100: 1.6
+position 200: 3.3
+position 300: 4.5
+position 400: 5.6
+position 500: 6.5
+position 600: 7.4
+position 700: 8.3
+position 800: 9.3
+position 900: 10.2
+position 1000: 11.2
+position 1100: 12.1
+position 1200: 13.1
+position 1300: 14.0
+position 1400: 14.9
+position 1500: 15.7
+position 1600: 16.7
+position 1700: 17.6
+position 1800: 18.4
+position 1900: 19.4
+position 2000: 20.3
+position 2100: 21.1
+position 2200: 21.9
+position 2300: 22.7
+position 2400: 23.6
+position 2500: 24.5
+position 2600: 25.6
+position 2700: 26.8
+position 2800: 28.2
+position 2900: 32.0
+
+Search target: 20.5
+Search method: binary
+Found at indices in ascending sorted data: [2007, 2008, 2009, 2010, 2011, 2012, 2013, 2014, 2015, 2016, 2017, 2018, 2019, 2020]
+----------------------------------------------------------------
+EXIT CODE: 0
+================================================================
+Parallel merge sort CityN_100000.txt
+COMMAND: python -m src.main --file CityN_100000.txt --parallel-merge --parallel-depth 2 --print-interval 1000
+----------------------------------------------------------------
+Weather Data Analyzer
+
+Dataset: CityN_100000.txt
+Records loaded: 100000
+First 10 values: [14.4, 14.5, 14.9, 18.3, 15.2, 9.9, 17.4, 15.1, 15.5, 17.0]
+
+Sorting algorithm: depth-limited parallel merge
+Parallel depth: 2
+
+Every 1000th sorted value:
+position 1000: 6.2
+position 2000: 8.6
+position 3000: 10.3
+position 4000: 11.7
+position 5000: 13.0
+position 6000: 14.1
+position 7000: 15.1
+position 8000: 16.0
+position 9000: 17.0
+position 10000: 17.8
+position 11000: 18.7
+position 12000: 19.4
+position 13000: 20.2
+position 14000: 20.9
+position 15000: 21.5
+position 16000: 22.2
+position 17000: 22.8
+position 18000: 23.4
+position 19000: 24.1
+position 20000: 24.6
+position 21000: 25.2
+position 22000: 25.8
+position 23000: 26.3
+position 24000: 26.8
+position 25000: 27.4
+position 26000: 27.9
+position 27000: 28.4
+position 28000: 28.9
+position 29000: 29.5
+position 30000: 30.0
+position 31000: 30.5
+position 32000: 31.0
+position 33000: 31.5
+position 34000: 32.0
+position 35000: 32.5
+position 36000: 33.0
+position 37000: 33.5
+position 38000: 34.0
+position 39000: 34.5
+position 40000: 35.0
+position 41000: 35.5
+position 42000: 36.0
+position 43000: 36.5
+position 44000: 37.0
+position 45000: 37.5
+position 46000: 38.0
+position 47000: 38.5
+position 48000: 39.0
+position 49000: 39.5
+position 50000: 40.0
+position 51000: 40.5
+position 52000: 41.0
+position 53000: 41.5
+position 54000: 42.0
+position 55000: 42.5
+position 56000: 43.0
+position 57000: 43.5
+position 58000: 44.0
+position 59000: 44.5
+position 60000: 45.0
+position 61000: 45.5
+position 62000: 46.0
+position 63000: 46.5
+position 64000: 47.0
+position 65000: 47.5
+position 66000: 48.0
+position 67000: 48.5
+position 68000: 49.0
+position 69000: 49.5
+position 70000: 50.0
+position 71000: 50.0
+position 72000: 50.0
+position 73000: 50.0
+position 74000: 50.0
+position 75000: 50.0
+position 76000: 50.0
+position 77000: 50.0
+position 78000: 50.0
+position 79000: 50.0
+position 80000: 50.0
+position 81000: 50.0
+position 82000: 50.0
+position 83000: 50.0
+position 84000: 50.0
+position 85000: 50.0
+position 86000: 50.0
+position 87000: 50.0
+position 88000: 50.0
+position 89000: 50.0
+position 90000: 50.0
+position 91000: 50.0
+position 92000: 50.0
+position 93000: 50.0
+position 94000: 50.0
+position 95000: 50.0
+position 96000: 50.0
+position 97000: 50.0
+position 98000: 50.0
+position 99000: 50.0
+position 100000: 50.0
+----------------------------------------------------------------
+EXIT CODE: 0
+
+================================================================
+Extra evidence: bubble sort CityA_365 every 15th value
+COMMAND: python -m src.main --file CityA_365.txt --sort bubble --order asc --print-interval 15
+----------------------------------------------------------------
+Weather Data Analyzer
+
+Dataset: CityA_365.txt
+Records loaded: 365
+First 10 values: [17.7, 18.7, 16.2, 9.3, 15.2, 11.6, 17.6, 11.5, 20.2, 18.7]
+
+Sorting algorithm: bubble
+Order: ascending
+
+Every 15th sorted value:
+position 15: 2.4
+position 30: 3.9
+position 45: 4.9
+position 60: 6.0
+position 75: 6.9
+position 90: 8.1
+position 105: 9.3
+position 120: 10.7
+position 135: 11.6
+position 150: 13.4
+position 165: 14.2
+position 180: 15.2
+position 195: 16.0
+position 210: 17.2
+position 225: 18.1
+position 240: 19.0
+position 255: 20.3
+position 270: 21.1
+position 285: 22.3
+position 300: 23.3
+position 315: 24.6
+position 330: 25.8
+position 345: 27.1
+position 360: 29.7
+----------------------------------------------------------------
+EXIT CODE: 0
+================================================================
+Extra evidence: linear search CityA_365 for 18
+COMMAND: python -m src.main --file CityA_365.txt --search 18
+----------------------------------------------------------------
+Weather Data Analyzer
+
+Dataset: CityA_365.txt
+Records loaded: 365
+First 10 values: [17.7, 18.7, 16.2, 9.3, 15.2, 11.6, 17.6, 11.5, 20.2, 18.7]
+
+Search target: 18.0
+Search method: linear
+Found at indices in current data: [45]
+----------------------------------------------------------------
+EXIT CODE: 0
+================================================================
+Extra evidence: binary search CityB_365 for 20
+COMMAND: python -m src.main --file CityB_365.txt --search 20 --binary
+----------------------------------------------------------------
+Weather Data Analyzer
+
+Dataset: CityB_365.txt
+Records loaded: 365
+First 10 values: [17.6, 15.9, 14.8, 13.4, 17.7, 13.4, 20.3, 16.5, 16.7, 17.2]
+
+Search target: 20.0
+Search method: binary
+Target not found.
+Nearest value(s):
+value 19.9 at indices [240]
+value 20.1 at indices [241, 242]
+----------------------------------------------------------------
+EXIT CODE: 0
+================================================================
+Extra evidence: binary search CityC_1460 for 25
+COMMAND: python -m src.main --file CityC_1460.txt --search 25 --binary
+----------------------------------------------------------------
+Weather Data Analyzer
+
+Dataset: CityC_1460.txt
+Records loaded: 1460
+First 10 values: [12.0, 13.1, 19.0, 15.6, 17.6, 12.1, 14.0, 15.1, 12.9, 18.2]
+
+Search target: 25.0
+Search method: binary
+Found at indices in ascending sorted data: [1267, 1268]
+----------------------------------------------------------------
+EXIT CODE: 0
+================================================================
+Extra evidence: quick sort CityA_365 descending every 15th value
+COMMAND: python -m src.main --file CityA_365.txt --sort quick --order desc --print-interval 15
+----------------------------------------------------------------
+Weather Data Analyzer
+
+Dataset: CityA_365.txt
+Records loaded: 365
+First 10 values: [17.7, 18.7, 16.2, 9.3, 15.2, 11.6, 17.6, 11.5, 20.2, 18.7]
+
+Sorting algorithm: quick
+Order: descending
+
+Every 15th sorted value:
+position 15: 27.9
+position 30: 26.0
+position 45: 25.1
+position 60: 23.8
+position 75: 22.7
+position 90: 21.6
+position 105: 20.7
+position 120: 19.6
+position 135: 18.4
+position 150: 17.5
+position 165: 16.5
+position 180: 15.7
+position 195: 14.7
+position 210: 13.6
+position 225: 12.1
+position 240: 10.9
+position 255: 9.8
+position 270: 8.7
+position 285: 7.5
+position 300: 6.2
+position 315: 5.1
+position 330: 4.3
+position 345: 3.1
+position 360: -0.3
+----------------------------------------------------------------
+EXIT CODE: 0
+
