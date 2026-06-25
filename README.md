@@ -165,10 +165,10 @@ outputs/evaluation_output.txt
 ###### Sorting timing ######
 
 | Algorithm      |      n=365 |     n=1460 |
-| Bubble Sort    | 0.024173 s | 0.507980 s |
-| Insertion Sort | 0.012334 s | 0.109610 s |
-| Merge Sort     | 0.002186 s | 0.008049 s |
-| Quick Sort     | 0.001445 s | 0.003650 s |
+| Bubble Sort    | 0.007537 s | 0.127448 s |
+| Insertion Sort | 0.003537 s | 0.049763 s |
+| Merge Sort     | 0.000615 s | 0.002991 s |
+| Quick Sort     | 0.000394 s | 0.002017 s |
 
 ### Operation counts
 
@@ -191,10 +191,10 @@ Linear Search checks every value because all matches must be returned. Binary Se
 ###### Parallel Merge Sort timing
 
 | Method                |       Time |
-| Sequential Merge Sort | 0.489382 s |
-| Parallel Merge Sort   | 0.511090 s |
+| Sequential Merge Sort | 0.311387 s |
+| Parallel Merge Sort   | 0.407994 s |
 
-In this run, Parallel Merge Sort was slightly slower than Sequential Merge Sort. This is expected because multiprocessing has overhead. Parallel performance depends on whether the saving from sorting chunks concurrently is greater than the overhead of process creation, scheduling and data transfer between processes.
+In this run, Parallel Merge Sort was slightly slower than Sequential Merge Sort. This is expected sometimes because multiprocessing has overhead. Parallel performance depends on whether the saving from sorting chunks concurrently is greater than the overhead of process creation, scheduling and data transfer between processes.
 
 ## Evidence Files
 
