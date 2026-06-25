@@ -10,8 +10,7 @@ No built in search helpers
 def linear_search_all(values, target):
     """
     Linear Search:
-    Best time: O(1) if one match is first, but this version returns all matches.
-    Worst time: O(n).
+    Time: O(n) because every element is checked to return all matching indices.
     """
     matches = []
 

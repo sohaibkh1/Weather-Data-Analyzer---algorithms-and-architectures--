@@ -63,7 +63,7 @@ def insertion_sort(values, ascending=True):
 def merge_sort(values, ascending=True):
     """
     Merge Sort using divide-and-conquer.
-    time: O(n log n) in best, average and worst cases. Space: O(n).
+    Best, average and worst time: O(n log n). Space: O(n).
     """
     if len(values) <= 1:
         return list(values)

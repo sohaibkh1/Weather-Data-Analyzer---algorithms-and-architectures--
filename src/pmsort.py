@@ -1,9 +1,8 @@
 """
 Parallel Merge Sort support for the Weather Data Analyzer.
 
-I kept this file separate 
-because multiprocessing logic is different from
- the four normal sorting algorithms in sorting.py.
+I kept this file separate because multiprocessing logic is different from
+the four normal sorting algorithms in sorting.py.
 """
 
 import multiprocessing

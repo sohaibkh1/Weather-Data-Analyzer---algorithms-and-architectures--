@@ -4,7 +4,7 @@ COMM107J — Algorithms & Architectures
 Author: Sohaib Khalaf
 Date: 25/6/2026
 
-#  Overview  #
+#  Overview
 
 Weather Data Analyzer is a Python console application for loading, validating, sorting, searching and merging numeric weather data files.
 
@@ -41,6 +41,7 @@ The program supports 365-value files, 1460-value files, merged CityA/CityC datas
 
 Run all commands from the project root.
 
+```bash
 # ~Load and validate a file
 python -m src.main --file CityA_365.txt
 
@@ -73,6 +74,7 @@ python tests/test_sorting.py
 python tests/test_searching.py
 python tests/test_pmsort.py
 python tests/test_main.py
+```
 
 #### CLI Arguments
 
@@ -109,7 +111,7 @@ Quick Sort is included because it is an important divide-and-conquer algorithm. 
 Linear Search and Binary Search show the main search trade-off. Linear Search works on unsorted data but checks every value when all matches are required.
  Binary Search uses far fewer comparisons, but requires ascending sorted data first. In this program, Binary Search uses a sorted copy so the original data order is not changed.
 
-###### Complexity Summary #
+###### Complexity Summary
 
 
 - Bubble Sort:  best = O(n) when the list is already sorted and the swapped flag stops early; average = O(n^2); worst  = O(n^2); extra memory = O(n) in this implementation because the input is copied
@@ -122,7 +124,7 @@ Linear Search and Binary Search show the main search trade-off. Linear Search wo
 - **Parallel Merge Sort**: total work is still based on = O(n log n), but wall-clock time may improve if chunks are sorted concurrently and process overhead is lower than the time saved.
 
 k is the number of matching or duplicate values returned.
-###### Searching Behaviour ##
+###### Searching Behaviour
 
 Both search methods return all matching indices.
 
@@ -130,7 +132,7 @@ Linear Search scans the current list order. Binary Search works on an ascending 
 
 When a target is not found, "nearest_values" returns the closest value or values. It uses a binary search style insertion position, then checks the nearest value on the left and right. If both sides are equally close, both values are returned with all duplicate indices. This handles targets below the minimum, above the maximum and exactly between two values.
 
-###### Parallel Merge Sort ###
+###### Parallel Merge Sort
 
 The Parallel Merge Sort implementation is in `src/pmsort.py` and uses this signature:
 
@@ -146,7 +148,7 @@ With max_depth=2, the data is split into four leaf chunks. This gives a controll
 
 If multiprocessing cannot be used in the current environment, the function falls back to Sequential Merge Sort rather than failing.
 
-###### Testing ####
+###### Testing
 
 The tests cover sorting, searching, parallel sorting and file loading.
 
@@ -156,13 +158,13 @@ The final test evidence is saved in:
 
 outputs/test_output.txt
 
-###### Evaluation Results #####
+###### Evaluation Results
 
 The final evaluation output is saved in:
 
 outputs/evaluation_output.txt
 
-###### Sorting timing ######
+###### Sorting timing
 
 | Algorithm      |      n=365 |     n=1460 |
 | Bubble Sort    | 0.007537 s | 0.127448 s |
@@ -180,7 +182,7 @@ outputs/evaluation_output.txt
 
 The results show the expected scaling pattern. Bubble Sort and Insertion Sort grow much more quickly, while Merge Sort and Quick Sort remain faster on the larger file.
 
-###### Search comparisons ######
+###### Search comparisons
 
 | Method        | n=365 | n=1460 |
 | Linear Search |   365 |  1,460 |
@@ -195,13 +197,6 @@ Linear Search checks every value because all matches must be returned. Binary Se
 | Parallel Merge Sort   | 0.407994 s |
 
 In this run, Parallel Merge Sort was slightly slower than Sequential Merge Sort. This is expected sometimes because multiprocessing has overhead. Parallel performance depends on whether the saving from sorting chunks concurrently is greater than the overhead of process creation, scheduling and data transfer between processes.
-
-## Evidence Files
-
-| File                              purpose 
-| `outputs/terminal_output.txt`      Successful command-line runs for loading, sorting, searching, merging and parallel sorting
-| `outputs/test_output.txt`             Test results showing all test files passing                    
-| `outputs/evaluation_output.txt`       Timing, operation-count and search-comparison results      
 
 ## Limitations
 
